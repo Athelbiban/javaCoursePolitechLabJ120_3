@@ -4,6 +4,6 @@ module org.example.javacoursepolitechlabj120_3 {
     requires java.scripting;
 
 
-    opens org.example.javacoursepolitechlabj120_3 to javafx.fxml;
-    exports org.example.javacoursepolitechlabj120_3;
+    exports org.example;
+    opens org.example to javafx.fxml;
 }

@@ -1,4 +1,4 @@
-package org.example.javacoursepolitechlabj120_3;
+package org.example;
 
 public class HelloController {
     public double calculation(double a, double b, String operator){

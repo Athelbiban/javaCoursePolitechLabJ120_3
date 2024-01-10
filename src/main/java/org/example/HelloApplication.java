@@ -1,4 +1,4 @@
-package org.example.javacoursepolitechlabj120_3;
+package org.example;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -11,8 +11,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-
-
 public class HelloApplication extends Application {
 
     private TextField output;
@@ -22,12 +20,15 @@ public class HelloApplication extends Application {
     private final HelloController model = new HelloController();
 
     public void processNum(ActionEvent event){
+
         if(start){
             output.setText("");
             start = false;
         }
+
         String value = ((Button)event.getSource()).getText();
         boolean isHaveDot = false;
+
         if(value.equals(".")){
             if(operator.equals("")&&output.getText().isEmpty())output.setText("0.0");
             char[] temp = output.getText().toCharArray();
@@ -38,6 +39,7 @@ public class HelloApplication extends Application {
                 }
             }
         }
+
         if(isHaveDot){
             output.setText(output.getText());
         }else {
@@ -51,13 +53,17 @@ public class HelloApplication extends Application {
     }
 
     public void processOperator(ActionEvent event) {
+
         String value = ((Button) event.getSource()).getText();
+
         if ("C".equals(value)){
             output.setText("0.0");
             operator = "";
             start = true;
         }else {
+
             if (!"=".equals(value)) {
+
                 if (!operator.isEmpty()) return;
                 operator = value;
                 num1 = Double.parseDouble(output.getText());
@@ -68,6 +74,7 @@ public class HelloApplication extends Application {
                 operator = "";
                 start = true;
             }
+
         }
     }
 
@@ -83,7 +90,7 @@ public class HelloApplication extends Application {
         output.setMinSize(300,60);
         output.setMaxSize(300,60);
 
-        Map<Num, >
+//        Map<Num, >
 
         Button[] buttonsNum = {
                 new Button("0"),
@@ -196,13 +203,13 @@ public class HelloApplication extends Application {
         HBox root = new HBox();
         root.getChildren().add(output);
         HBox root1 = new HBox();
-        root1.getChildren().addAll(Num.SEVEN.getNum(),button8,button9,buttonPlus);
+        root1.getChildren().addAll(Num.SEVEN.getNum(), Num.EIGHT.getNum(), Num.NINE.getNum(), Operator.SUM.action());
         HBox root2 = new HBox();
-        root2.getChildren().addAll(button4,button5,button6,buttonMinus);
+//        root2.getChildren().addAll(button4,button5,button6,buttonMinus);
         HBox root3 = new HBox();
-        root3.getChildren().addAll(button1,button2,button3,buttonMultiply);
+//        root3.getChildren().addAll(button1,button2,button3,buttonMultiply);
         HBox root4 = new HBox();
-        root4.getChildren().addAll(button0,buttonDot,buttonC,buttonDivision);
+//        root4.getChildren().addAll(button0,buttonDot,buttonC,buttonDivision);
 
         VBox rootMain = new VBox();
         rootMain.getChildren().addAll(root,root1,root2,root3, root4,buttonEquals);
@@ -215,22 +222,5 @@ public class HelloApplication extends Application {
     public static void main(String[] args) {
         launch();
     }
-}
-
-enum Num {
-
-    ZERO("0"), ONE("1"), TWO("2"), THREE("3"), FOUR("4"),
-    FIVE("5"), SIX("6"), SEVEN("7"), EIGHT("8"), NINE("9");
-
-    private final String NUM;
-
-    Num(String num) {
-        NUM = num;
-    }
-
-    public String getNum() { return NUM; }
-}
-
-enum Operator {
 
 }
